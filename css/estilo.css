@@ -241,6 +241,8 @@ body {
    la tarjeta toque los bordes en el celular */
 .login {
     padding: 48px 16px;
+    /* El mismo brillo verde de la portada, saliendo desde arriba */
+    background-image: radial-gradient(circle at 50% 0%, rgba(0, 255, 136, 0.18) 0%, transparent 60%);
 }
 
 /* Tarjeta centrada: en el celular ocupa el ancho, en el monitor no pasa de 420px */
