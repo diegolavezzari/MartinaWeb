@@ -24,6 +24,20 @@
                 <a href="login.html" class="boton">Ingresar</a>
                 <a href="registro.html" class="boton boton-secundario">Crear cuenta</a>
             </div>
+
+            <!-- Simulador: el usuario prueba cómo una compra afecta su meta -->
+            <div class="simulador">
+                <h2>Probá cómo funciona</h2>
+                <p>Ejemplo: tu meta es un <strong>Viaje a Europa</strong>. Ya ahorraste $450.000 de $750.000 (60%).</p>
+
+                <label for="monto">¿Cuánto vas a gastar?</label>
+                <input type="number" id="monto" placeholder="85000" min="0">
+
+                <button type="button" id="btn-simular" class="boton">Calcular</button>
+
+                <!-- Vacío: el JS escribe acá el resultado -->
+                <p id="resultado" class="resultado-alerta"></p>
+            </div>
         </div>
 
         <!-- Qué hace la app -->
@@ -47,11 +61,11 @@
         </div>
 
         <div class="pie">
-            <p>Bolsillo Sano — IFTS 16</p>
+            <footer>Bolsillo Sano — IFTS 16 — <span id="anio"></span></footer>
         </div>
 
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

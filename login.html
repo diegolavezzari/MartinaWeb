@@ -8,11 +8,16 @@
 </head>
 <body>
 
+    <!-- La misma barra que la bienvenida, así parece la misma app -->
+    <div class="barra-superior">
+        <p class="logo">Bolsillo $ano</p>
+    </div>
+
     <div class="login">
         <div class="login-card">
 
             <div class="login-logo">
-                <h1>Bolsillo Sano</h1>
+                <h1>Ingresá a tu cuenta</h1>
                 <p>Controlá tus gastos, cumplí tus metas</p>
             </div>
 
@@ -26,11 +31,19 @@
                 <input type="password" id="password" name="password" placeholder="••••••••">
             </div>
 
-            <button type="button">Ingresar</button>
+            <button type="button" id="btn-ingresar" class="boton">Ingresar</button>
+
+            <!-- Vacío: el JS escribe acá si falta algún dato -->
+            <p id="mensaje"></p>
+
+            <div class="login-links">
+                <p>¿No tenés cuenta? <a href="registro.html">Crear cuenta</a></p>
+                <a href="index.html">← Volver</a>
+            </div>
 
         </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>
