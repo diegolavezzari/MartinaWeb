@@ -1,0 +1,311 @@
+/* ===== COLORES (variables) ===== */
+
+/* Se definen una sola vez acá y se usan con var(--nombre).
+   Para cambiar la paleta, alcanza con tocar estas líneas. */
+:root {
+    /* Estilo "futurista": fondo casi negro + UN solo acento verde neón.
+       El verde también significa "ahorro, vas bien", así que se usa
+       solo en lo importante: botones, montos y progreso. */
+
+    /* Marca */
+    --principal: #00FF88;              /* verde neón: botones, montos, títulos clave */
+    --principal-oscuro: #00CC6D;       /* verde más apagado: hover */
+    --texto-sobre-principal: #0A0A0A;  /* texto oscuro encima del verde (el blanco no se lee) */
+
+    /* Colores con significado (no usarlos como decoración) */
+    --ahorro: #00FF88;                 /* progreso, ahorro, vas bien */
+    --alerta: #FF4D6D;                 /* compra impulsiva, gasto */
+    --advertencia: #FFB020;            /* meta en riesgo */
+
+    /* Neutros oscuros */
+    --fondo: #0A0A0A;                  /* fondo de la página, casi negro */
+    --tarjeta: #161616;                /* fondo de tarjetas y barras, un poco más claro */
+    --borde: #2A2A2A;                  /* borde finito de las tarjetas */
+    --texto: #FAFAFA;                  /* texto principal, casi blanco */
+    --texto-suave: #A3A3A3;            /* textos secundarios */
+    --gris-claro: #262626;             /* fondo de la barra de progreso */
+}
+
+
+/* ===== BASE (vale para todas las páginas) ===== */
+
+/* El padding y el borde se cuentan dentro del ancho,
+   así width: 100% no se pasa de la pantalla */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;                         /* saca el margen que trae el navegador */
+    font-family: Arial, sans-serif;
+    background-color: var(--fondo);
+    color: var(--texto);
+}
+
+
+/* ===== PANTALLA DE BIENVENIDA (index.html) ===== */
+
+/* Barra de arriba: ocupa todo el ancho.
+   flex + space-between = el logo a la izquierda y el link a la derecha */
+.barra-superior {
+    display: flex;
+    justify-content: center;
+    padding: 0px 0px;
+    text-align: center;
+    background-color: var(--fondo);
+    border-bottom: 1px solid var(--borde);   /* en fondo oscuro la sombra no se ve: usamos una línea */
+}
+
+.logo {
+    margin: 8px 0;                     /* 8px arriba y abajo, 0 a los costados */
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--principal);
+}
+
+/* Portada oscura de punta a punta, con el texto centrado.
+   El "brillo" verde de atrás es un degradado radial: un círculo de color
+   en el centro que se va volviendo transparente hacia afuera */
+.portada {
+    background-color: var(--fondo);
+    background-image: radial-gradient(circle at 50% 0%, rgba(0, 255, 136, 0.18) 0%, transparent 60%);
+    text-align: center;
+    padding: 48px 24px;
+}
+
+.portada h1 {
+    margin: 0 auto 16px auto;
+    max-width: 700px;                  /* que el título no quede en una línea larguísima */
+    font-size: 28px;
+    color: var(--texto);
+}
+
+.portada p {
+    margin: 0 auto 24px auto;
+    max-width: 600px;
+    font-size: 16px;
+    color: var(--texto-suave);
+}
+
+/* Botones: uno al lado del otro y, si no entran, bajan (wrap) */
+.botones {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.boton {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--principal);
+    color: var(--texto-sobre-principal);
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid var(--principal);   /* mismo borde que el secundario, así miden igual */
+    border-radius: 10px;
+}
+
+.boton:hover {
+    background-color: var(--principal-oscuro);
+    border-color: var(--principal-oscuro);
+}
+
+/* Variante: botón "hueco", solo con borde verde */
+.boton-secundario {
+    background-color: transparent;
+    color: var(--principal);
+}
+
+.boton-secundario:hover {
+    background-color: rgba(0, 255, 136, 0.1);   /* verde transparente */
+    border-color: var(--principal);
+}
+
+/* Beneficios: en el celular, uno abajo del otro */
+.beneficios {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 32px 16px;
+}
+
+.beneficio {
+    background-color: var(--tarjeta);
+    padding: 20px;
+    border-radius: 18px;
+    margin-bottom: 16px;
+    border: 1px solid var(--borde);
+}
+
+.beneficio h2 {
+    margin: 0 0 8px 0;
+    text-align: center;
+    font-size: 18px;
+    color: var(--principal);
+    padding: 10 10;
+}
+
+.beneficio p {
+    margin: 0;
+    color: var(--texto-suave);
+}
+
+.pie {
+    text-align: center;
+    padding: 16px;
+    color: var(--texto-suave);
+    font-size: 14px;
+}
+
+
+/* ===== PANTALLA DE INICIO ===== */
+
+/* Contenedor: en el celular ocupa todo el ancho,
+   en el monitor se ensancha hasta 1000px y queda centrado */
+.inicio {
+    max-width: 1000px;
+    margin: 0 auto;                    /* 0 arriba/abajo, auto a los costados = centrado */
+    padding: 16px;
+}
+
+/* Encabezado con el nombre de la app (en verde) y el saludo */
+.encabezado {
+    background-color: var(--tarjeta);
+    border: 1px solid var(--borde);
+    padding: 20px;
+    border-radius: 18px;
+    margin-bottom: 16px;
+}
+
+.encabezado h1 {
+    margin: 0 0 4px 0;                 /* arriba, derecha, abajo, izquierda */
+    font-size: 24px;
+    color: var(--principal);
+}
+
+.encabezado p {
+    margin: 0;
+    color: var(--texto-suave);
+}
+
+/* Las tres tarjetas comparten estilo: se agrupan con comas */
+.saldo,
+.meta,
+.resumen {
+    background-color: var(--tarjeta);
+    padding: 16px;
+    border-radius: 18px;
+    margin-bottom: 16px;
+    border: 1px solid var(--borde);    /* línea finita: en fondo oscuro reemplaza a la sombra */
+}
+
+/* Títulos de las tarjetas: más chicos y en gris */
+.saldo h2,
+.meta h2,
+.resumen h2 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: var(--texto-suave);
+}
+
+/* Nombre de la meta ("Viaje a Europa") */
+.meta h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+}
+
+/* El monto disponible es lo más importante: grande y en negrita */
+.saldo p {
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--principal);
+}
+
+/* Link "Ver mis metas" con forma de botón */
+.meta a {
+    display: inline-block;             /* permite darle padding como a una caja */
+    margin-top: 8px;
+    padding: 10px 16px;
+    background-color: var(--principal);
+    color: var(--texto-sobre-principal);
+    font-weight: bold;
+    text-decoration: none;             /* saca el subrayado */
+    border-radius: 10px;
+}
+
+.meta a:hover {
+    background-color: var(--principal-oscuro);   /* más oscuro al pasar el mouse */
+}
+
+/* ===== BARRA DE PROGRESO ===== */
+
+/* El fondo gris (el 100%) */
+.barra {
+    height: 10px;
+    background-color: var(--gris-claro);
+    border-radius: 10px;
+    overflow: hidden;                  /* que el relleno no se salga de los bordes redondeados */
+}
+
+/* La parte pintada: arranca en 0 y el JS le pone el ancho */
+.relleno {
+    height: 100%;
+    width: 0;
+    background-color: var(--ahorro);
+    border-radius: 10px;
+}
+
+
+/* ===== PANTALLAS GRANDES (monitor) ===== */
+
+/* Mobile first: todo lo de arriba es para el celular.
+   Esto solo se aplica si la pantalla mide 768px o más. */
+@media (min-width: 768px) {
+
+    /* Las tarjetas se ponen en 3 columnas, una al lado de la otra */
+    .inicio {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;   /* 3 columnas iguales */
+        gap: 16px;                            /* espacio entre tarjetas */
+        padding: 32px;
+    }
+
+    /* El encabezado ocupa toda la fila de arriba */
+    .encabezado {
+        grid-column: 1 / -1;                  /* desde la primera hasta la última columna */
+    }
+
+    /* Con gap ya hay separación, así que se saca el margin-bottom */
+    .encabezado,
+    .saldo,
+    .meta,
+    .resumen {
+        margin-bottom: 0;
+    }
+
+    /* Bienvenida: portada más alta y título más grande */
+    .portada {
+        padding: 96px 24px;
+    }
+
+    .portada h1 {
+        font-size: 40px;
+    }
+
+    .portada p {
+        font-size: 18px;
+    }
+
+    /* Los 3 beneficios uno al lado del otro */
+    .beneficios {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
+        padding: 48px 32px;
+    }
+
+    .beneficio {
+        margin-bottom: 0;
+    }
+}
