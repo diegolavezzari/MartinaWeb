@@ -274,22 +274,22 @@ body {
 
 /* ===== PANTALLA DE LOGIN Y REGISTRO ===== */
 
-/* Fondo turquesa clarito alrededor de la tarjeta.
+/* Mismo fondo blanco que el resto de las páginas.
    El padding de los costados evita que la tarjeta toque los bordes en el celular */
 .login {
     padding: 48px 16px;
-    background-color: var(--marca-suave);
-    min-height: 100vh;                 /* que el fondo llegue hasta abajo de la pantalla */
 }
 
-/* Tarjeta blanca centrada: en el celular ocupa el ancho, en el monitor no pasa de 420px */
+/* Tarjeta blanca centrada: en el celular ocupa el ancho, en el monitor no pasa de 420px.
+   Como el fondo también es blanco, el borde y la sombra marcan dónde está la tarjeta */
 .login-card {
     max-width: 420px;
     margin: 0 auto;
     padding: 32px 24px;
     background-color: var(--tarjeta);
+    border: 1px solid var(--borde);
     border-radius: 20px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .login-logo {
