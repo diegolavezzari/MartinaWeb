@@ -3,27 +3,36 @@
 /* Se definen una sola vez acá y se usan con var(--nombre).
    Para cambiar la paleta, alcanza con tocar estas líneas. */
 :root {
-    /* Estilo "futurista": fondo casi negro + UN solo acento verde neón.
-       El verde también significa "ahorro, vas bien", así que se usa
-       solo en lo importante: botones, montos y progreso. */
+    /* Estilo claro inspirado en Life Seguros: fondo blanco,
+       turquesa de marca, botones azules y carteles de colores. */
 
     /* Marca */
-    --principal: #00FF88;              /* verde neón: botones, montos, títulos clave */
-    --principal-oscuro: #00CC6D;       /* verde más apagado: hover */
-    --texto-sobre-principal: #0A0A0A;  /* texto oscuro encima del verde (el blanco no se lee) */
+    --marca: #00b2b3;                  /* turquesa: logo y banners */
+    --marca-suave: #e6f7f7;            /* turquesa muy clarito: fondos */
+    --principal: #0074ff;              /* azul: botones y links */
+    --principal-oscuro: #005ad1;       /* azul más oscuro: hover */
+    --texto-sobre-principal: #ffffff;  /* texto blanco encima del azul */
 
-    /* Colores con significado (no usarlos como decoración) */
-    --ahorro: #00FF88;                 /* progreso, ahorro, vas bien */
-    --alerta: #FF4D6D;                 /* compra impulsiva, gasto */
-    --advertencia: #FFB020;            /* meta en riesgo */
+    /* Colores con significado */
+    --ahorro: #44c682;                 /* progreso, ahorro, vas bien */
+    --alerta: #e0245e;                 /* compra impulsiva, gasto */
+    --advertencia: #d97706;            /* avisos (más oscuro que el naranja, para leerse en blanco) */
 
-    /* Neutros oscuros */
-    --fondo: #0A0A0A;                  /* fondo de la página, casi negro */
-    --tarjeta: #161616;                /* fondo de tarjetas y barras, un poco más claro */
-    --borde: #2A2A2A;                  /* borde finito de las tarjetas */
-    --texto: #FAFAFA;                  /* texto principal, casi blanco */
-    --texto-suave: #A3A3A3;            /* textos secundarios */
-    --gris-claro: #262626;             /* fondo de la barra de progreso */
+    /* Colores de los carteles (los mismos que usa Life) */
+    --naranja: #fbab48;
+    --verde: #44c682;
+    --rosa: #ff87ab;
+    --celeste: #7ad1ea;
+    --violeta: #916ff4;
+    --turquesa: #35bebb;
+
+    /* Neutros claros */
+    --fondo: #ffffff;                  /* fondo de la página */
+    --tarjeta: #ffffff;                /* fondo de las tarjetas blancas */
+    --borde: #e5e5e5;                  /* borde finito de las tarjetas */
+    --texto: #313131;                  /* texto principal, gris muy oscuro */
+    --texto-suave: #7a7a7a;            /* textos secundarios */
+    --gris-claro: #eeeeee;             /* fondo de la barra de progreso */
 }
 
 
@@ -45,46 +54,41 @@ body {
 
 /* ===== PANTALLA DE BIENVENIDA (index.html) ===== */
 
-/* Barra de arriba: ocupa todo el ancho.
-   flex + space-between = el logo a la izquierda y el link a la derecha */
+/* Barra de arriba: blanca, con el logo centrado y una línea abajo */
 .barra-superior {
     display: flex;
     justify-content: center;
-    padding: 0px 0px;
     text-align: center;
     background-color: var(--fondo);
-    border-bottom: 1px solid var(--borde);   /* en fondo oscuro la sombra no se ve: usamos una línea */
+    border-bottom: 1px solid var(--borde);
 }
 
 .logo {
     margin: 8px 0;                     /* 8px arriba y abajo, 0 a los costados */
     font-size: 50px;
     font-weight: bold;
-    color: var(--principal);
+    color: var(--marca);
 }
 
-/* Portada oscura de punta a punta, con el texto centrado.
-   El "brillo" verde de atrás es un degradado radial: un círculo de color
-   en el centro que se va volviendo transparente hacia afuera */
+/* Portada: el "banner" grande turquesa con el texto en blanco,
+   como el de Life pero fijo (sin carrusel) */
 .portada {
-    background-color: var(--fondo);
-    background-image: radial-gradient(circle at 50% 0%, rgba(0, 255, 136, 0.18) 0%, transparent 60%);
+    background-color: var(--marca);
+    color: white;
     text-align: center;
-    padding: 24px 24px 32px 24px;     /* arriba 24px (antes 32px) */
+    padding: 32px 24px 40px 24px;
 }
 
 .portada h1 {
     margin: 0 auto 16px auto;
     max-width: 700px;                  /* que el título no quede en una línea larguísima */
     font-size: 28px;
-    color: var(--texto);
 }
 
 .portada p {
     margin: 0 auto 24px auto;
     max-width: 600px;
     font-size: 16px;
-    color: var(--texto-suave);
 }
 
 /* Botones: uno al lado del otro y, si no entran, bajan (wrap) */
@@ -95,15 +99,16 @@ body {
     gap: 12px;
 }
 
+/* Botón con forma de "pastilla" (bordes bien redondeados), como en Life */
 .boton {
     display: inline-block;
-    padding: 12px 24px;
+    padding: 12px 28px;
     background-color: var(--principal);
     color: var(--texto-sobre-principal);
     font-weight: bold;
     text-decoration: none;
     border: 2px solid var(--principal);   /* mismo borde que el secundario, así miden igual */
-    border-radius: 10px;
+    border-radius: 40px;
 }
 
 .boton:hover {
@@ -111,20 +116,21 @@ body {
     border-color: var(--principal-oscuro);
 }
 
-/* Variante: botón "hueco", solo con borde verde */
+/* Variante: botón blanco con letra azul */
 .boton-secundario {
-    background-color: transparent;
+    background-color: white;
     color: var(--principal);
+    border-color: white;
 }
 
 .boton-secundario:hover {
-    background-color: rgba(0, 255, 136, 0.1);   /* verde transparente */
-    border-color: var(--principal);
+    background-color: var(--marca-suave);
+    border-color: var(--marca-suave);
 }
 
 /* ===== SIMULADOR DE COMPRA (dentro de la portada) ===== */
 
-/* Tarjeta centrada, con el texto alineado a la izquierda
+/* Tarjeta blanca centrada, con el texto alineado a la izquierda
    (la portada centra todo, acá lo volvemos a la izquierda) */
 .simulador {
     max-width: 500px;
@@ -132,14 +138,15 @@ body {
     padding: 24px;
     text-align: left;
     background-color: var(--tarjeta);
-    border: 1px solid var(--borde);
-    border-radius: 18px;
+    color: var(--texto);               /* la portada pone el texto blanco: acá lo volvemos oscuro */
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);   /* sombra suave abajo */
 }
 
 .simulador h2 {
     margin: 0 0 8px 0;
     font-size: 20px;
-    color: var(--principal);
+    color: var(--marca);
 }
 
 /* Pisa los márgenes que le da ".portada p" */
@@ -168,11 +175,11 @@ body {
     border-radius: 10px;
 }
 
-/* Al hacer clic en el input, el borde se pone verde */
+/* Al hacer clic en el input, el borde se pone turquesa */
 .simulador input:focus,
 .campo input:focus {
     outline: none;                     /* saca el recuadro que pone el navegador */
-    border-color: var(--principal);
+    border-color: var(--marca);
 }
 
 /* Un <button> no hereda la letra de la página: se la damos a mano */
@@ -184,8 +191,7 @@ body {
     cursor: pointer;                   /* manito al pasar el mouse */
 }
 
-/* El resultado: el JS le pone una de estas dos clases.
-   Llevan ".simulador" adelante para ganarle al color gris de ".portada p" */
+/* El resultado: el JS le pone una de estas dos clases */
 .simulador #resultado {
     margin: 16px 0 0 0;
     font-weight: bold;
@@ -207,24 +213,16 @@ body {
 }
 
 .beneficio {
-    background-color: var(--tarjeta);
-    padding: 20px;
-    border-radius: 18px;
     margin-bottom: 16px;
-    border: 1px solid var(--borde);
 }
 
 .beneficio h2 {
     margin: 0 0 8px 0;
-    text-align: center;
-    font-size: 18px;
-    color: var(--principal);
-    padding: 10 10;
+    font-size: 20px;
 }
 
 .beneficio p {
     margin: 0;
-    color: var(--texto-suave);
 }
 
 .pie {
@@ -235,24 +233,63 @@ body {
 }
 
 
-/* ===== PANTALLA DE LOGIN (login.html) ===== */
+/* ===== CARTELES DE COLORES (como las tarjetas de productos de Life) ===== */
 
-/* Espacio alrededor: el padding de los costados evita que
-   la tarjeta toque los bordes en el celular */
-.login {
-    padding: 48px 16px;
-    /* El mismo brillo verde de la portada, saliendo desde arriba */
-    background-image: radial-gradient(circle at 50% 0%, rgba(0, 255, 136, 0.18) 0%, transparent 60%);
+/* Caja de color fuerte con el texto en blanco.
+   El color sale de la variable --color, que cambia según
+   la segunda clase (cartel-naranja, cartel-verde, etc.) */
+.cartel {
+    background-color: var(--color);
+    color: white;
+    padding: 24px;
+    border-radius: 20px;
+    transition: transform 0.2s;        /* para que el movimiento del hover sea suave */
 }
 
-/* Tarjeta centrada: en el celular ocupa el ancho, en el monitor no pasa de 420px */
+/* Al pasar el mouse, el cartel sube un poquito */
+.cartel:hover {
+    transform: translateY(-5px);
+}
+
+/* Cada clase solo dice qué color usar */
+.cartel-naranja  { --color: var(--naranja); }
+.cartel-verde    { --color: var(--verde); }
+.cartel-rosa     { --color: var(--rosa); }
+.cartel-celeste  { --color: var(--celeste); }
+.cartel-violeta  { --color: var(--violeta); }
+.cartel-turquesa { --color: var(--turquesa); }
+
+/* El botón del cartel: blanco, con la letra del mismo color que el cartel */
+.cartel a {
+    display: inline-block;             /* permite darle padding como a una caja */
+    margin-top: 8px;
+    padding: 10px 20px;
+    background-color: white;
+    color: var(--color);
+    font-weight: bold;
+    text-decoration: none;             /* saca el subrayado */
+    border-radius: 40px;
+}
+
+
+/* ===== PANTALLA DE LOGIN Y REGISTRO ===== */
+
+/* Fondo turquesa clarito alrededor de la tarjeta.
+   El padding de los costados evita que la tarjeta toque los bordes en el celular */
+.login {
+    padding: 48px 16px;
+    background-color: var(--marca-suave);
+    min-height: 100vh;                 /* que el fondo llegue hasta abajo de la pantalla */
+}
+
+/* Tarjeta blanca centrada: en el celular ocupa el ancho, en el monitor no pasa de 420px */
 .login-card {
     max-width: 420px;
     margin: 0 auto;
     padding: 32px 24px;
     background-color: var(--tarjeta);
-    border: 1px solid var(--borde);
-    border-radius: 18px;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 .login-logo {
@@ -263,6 +300,7 @@ body {
 .login-logo h1 {
     margin: 0 0 8px 0;
     font-size: 24px;
+    color: var(--marca);
 }
 
 .login-logo p {
@@ -300,84 +338,72 @@ body {
 }
 
 
-/* ===== PANTALLA DE INICIO ===== */
+/* ===== PANTALLAS DE INICIO Y METAS ===== */
 
 /* Contenedor: en el celular ocupa todo el ancho,
    en el monitor se ensancha hasta 1000px y queda centrado */
-.inicio {
+.inicio,
+.metas {
     max-width: 1000px;
     margin: 0 auto;                    /* 0 arriba/abajo, auto a los costados = centrado */
     padding: 16px;
 }
 
-/* Encabezado con el nombre de la app (en verde) y el saludo */
+/* Encabezado: banner turquesa con el texto en blanco */
 .encabezado {
-    background-color: var(--tarjeta);
-    border: 1px solid var(--borde);
-    padding: 20px;
-    border-radius: 18px;
+    background-color: var(--marca);
+    color: white;
+    padding: 24px;
+    border-radius: 20px;
     margin-bottom: 16px;
 }
 
 .encabezado h1 {
     margin: 0 0 4px 0;                 /* arriba, derecha, abajo, izquierda */
-    font-size: 24px;
-    color: var(--principal);
+    font-size: 28px;
 }
 
 .encabezado p {
     margin: 0;
-    color: var(--texto-suave);
 }
 
-/* Las tres tarjetas comparten estilo: se agrupan con comas */
+/* Separación entre carteles en el celular (en el monitor la da el gap) */
 .saldo,
 .meta,
 .resumen {
-    background-color: var(--tarjeta);
-    padding: 16px;
-    border-radius: 18px;
     margin-bottom: 16px;
-    border: 1px solid var(--borde);    /* línea finita: en fondo oscuro reemplaza a la sombra */
 }
 
-/* Títulos de las tarjetas: más chicos y en gris */
+/* Títulos de los carteles: más chicos */
 .saldo h2,
 .meta h2,
 .resumen h2 {
     margin: 0 0 8px 0;
-    font-size: 14px;
-    color: var(--texto-suave);
+    font-size: 16px;
 }
 
 /* Nombre de la meta ("Viaje a Europa") */
 .meta h3 {
     margin: 0 0 8px 0;
-    font-size: 18px;
+    font-size: 22px;
 }
 
 /* El monto disponible es lo más importante: grande y en negrita */
 .saldo p {
     margin: 0;
-    font-size: 32px;
+    font-size: 36px;
     font-weight: bold;
+}
+
+/* Link "Volver al inicio" de la pantalla de metas */
+.volver {
     color: var(--principal);
-}
-
-/* Link "Ver mis metas" con forma de botón */
-.meta a {
-    display: inline-block;             /* permite darle padding como a una caja */
-    margin-top: 8px;
-    padding: 10px 16px;
-    background-color: var(--principal);
-    color: var(--texto-sobre-principal);
     font-weight: bold;
-    text-decoration: none;             /* saca el subrayado */
-    border-radius: 10px;
+    text-decoration: none;
 }
 
-.meta a:hover {
-    background-color: var(--principal-oscuro);   /* más oscuro al pasar el mouse */
+.volver:hover {
+    text-decoration: underline;
 }
 
 /* ===== BARRA DE PROGRESO ===== */
@@ -405,16 +431,25 @@ body {
    Esto solo se aplica si la pantalla mide 768px o más. */
 @media (min-width: 768px) {
 
-    /* Las tarjetas se ponen en 3 columnas, una al lado de la otra */
+    /* Inicio: los carteles en 3 columnas, uno al lado del otro */
     .inicio {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;   /* 3 columnas iguales */
-        gap: 16px;                            /* espacio entre tarjetas */
+        gap: 16px;                            /* espacio entre carteles */
         padding: 32px;
     }
 
-    /* El encabezado ocupa toda la fila de arriba */
-    .encabezado {
+    /* Metas: 2 columnas */
+    .metas {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        padding: 32px;
+    }
+
+    /* El encabezado y el link de volver ocupan toda la fila */
+    .encabezado,
+    .volver {
         grid-column: 1 / -1;                  /* desde la primera hasta la última columna */
     }
 
@@ -428,7 +463,7 @@ body {
 
     /* Bienvenida: portada más alta y título más grande */
     .portada {
-        padding: 64px 24px 24px 24px;     /* arriba 64px (antes 96px) */
+        padding: 64px 24px 48px 24px;
     }
 
     .portada h1 {
