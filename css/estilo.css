@@ -274,10 +274,12 @@ body {
 
 /* ===== PANTALLA DE LOGIN Y REGISTRO ===== */
 
-/* Mismo fondo blanco que el resto de las páginas.
+/* Fondo turquesa, igual que la portada del index.
    El padding de los costados evita que la tarjeta toque los bordes en el celular */
 .login {
     padding: 48px 16px;
+    background-color: var(--marca);
+    min-height: 100vh;                 /* que el turquesa llegue hasta abajo de la pantalla */
 }
 
 /* Tarjeta blanca centrada: en el celular ocupa el ancho, en el monitor no pasa de 420px.
